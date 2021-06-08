@@ -1,0 +1,90 @@
+.bg-hitam {
+	background: #000;
+	background: url(/img/banner.jpg) center no-repeat;
+	background-size: cover;
+}
+
+.bg-nav {
+	background: #006888;
+}
+
+.bg-hitam a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.post-header {
+	font-family: Catamaran, Raleway, Merriweather, Georgia, Sans-serif;
+}
+
+.post-content  {
+	font-family: Raleway, "Noto Sans", Roboto, Merriweather, Georgia, Sans-serif;
+}
+
+.top-header {
+	padding-top: 6rem;
+	padding-bottom: 3rem;
+}
+
+header h1, header h1 a {
+	font-family: Catamaran, "Open Sans", Merriweather, Georgia, Sans-serif;
+	color: #ddd;
+}
+
+.post-content h2, 
+.post-content h3, 
+.post-content h4, 
+.post-content h5,
+.post-content h6 {
+	margin: 1em 0;
+}
+
+.post-content img {
+	max-width: 100%;
+}
+.ovl {
+	font-size: 95%;
+	line-height: 1.1rem;
+	opacity: 0;
+	transition: 1s;
+}
+.ovl a {
+	text-decoration: none;
+}
+.ovl:hover {
+	opacity: 1;
+	background-color: rgba(0,0,0,0.5);
+}
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+	width: 1em;
+	height: 1em;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+	fill: #4691f6;
+  }
+  
+  .svg-icon circle {
+	stroke: #4691f6;
+	stroke-width: 1;
+  }
+
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+}
+
+.footer-icon {
+	animation: heartbeat 1.33s ease-in-out infinite;
+	fill: #f06292;
+	margin: 0 0.25em 0.3em;
+}

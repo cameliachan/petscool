@@ -1,0 +1,50 @@
+{{ if .IsHome -}}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "description": "{{ .Site.Params.description }}",
+    "thumbnailUrl": "{{ .Site.Params.Logo | absURL }}",
+    "license": "{{ .Site.Params.Copyright }}"
+}
+</script>
+{{ else if .IsPage }}
+{{ $author :=  or (.Params.author) (.Site.Author.name) }}
+{{ $org_name :=  .Site.Title }}
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "{{ .Params.title }}",
+	  "aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{{ .Params.ratingvalue }}",
+		"ratingCount": "{{ .Params.ratingcount }}"
+	  },
+      "image": [
+        "{{ .Params.image }}",
+        "{{ .Params.featuredImage }}",
+        "{{ .Params.featured_image }}"
+      ],
+	  "datePublished": "{{ dateFormat "2006-01-02T00:00:00Z" .Params.Date }}",
+      "dateModified": "{{ dateFormat "2006-01-02T00:00:00Z" .Params.Date }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ $author }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "News",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ .Params.image }}"
+        }
+      }
+    }
+    </script>
+{{ end }}
+
+

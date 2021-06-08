@@ -1,0 +1,11 @@
+<!-- Social Share Button HTML -->
+{{ $title := .Title }}
+{{ $url := printf "%s" .Permalink }}
+{{ $body := print $title ", by " .Site.Title "\n" .Params.description "\n\n" $url "\n" }}
+<div class="blog-social float-right mb-3 mt-0">
+    <a href="https://twitter.com/intent/tweet?hashtags=recipe&amp;url={{ .Permalink }}&amp;text={{ .Title }}" target="_blank" rel="noopener" aria-label="Share on Twitter" class="twitter" style="background-color: #00acee;"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.facebook.com/sharer.php?u={{ printf "%s" .Permalink  }}" target="_blank" rel="noopener" aria-label="Share on Facebook" class="facebook" style="background-color: #3b5998"><i class="fa fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $url }}&amp;source={{ $url }}&amp;title={{ $title }}&amp;summary={{ $title }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="linkedin" style="background-color: #0e76a8"><i class="fa fa-linkedin"></i></a>
+    <a href="whatsapp://send?text={{ $body }}" target="_blank" class="whatsapp" style="background-color: #25D366"><i class="fa fa-whatsapp"></i></a>
+    <a href="mailto:?subject={{ .Site.Title }} - {{ $title }}.&amp;body={{ $body }}" target="_blank" class="envelope" style="background-color: #B23121"><i class="fa fa-envelope"></i></a>
+</div>

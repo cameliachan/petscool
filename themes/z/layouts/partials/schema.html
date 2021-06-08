@@ -1,0 +1,44 @@
+{{ if .IsHome -}}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "description": "{{ .Site.Params.description }}",
+    "thumbnailUrl": "{{ .Site.Params.Logo | absURL }}",
+    "license": "{{ .Site.Params.Copyright }}"
+}
+</script>
+{{ else if .IsPage }}
+{{ $author :=  or (.Params.author) (.Site.Author.name) }}
+{{ $org_name :=  .Site.Title }}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "SoftwareApplication",
+  "name": "{{ .Params.title }}",
+  "applicationCategory": "{{ .Params.category }}",
+  "description": "{{ .Params.description }}",
+  "operatingSystem": "Android",
+  "image": "{{ .Params.image }}",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ .Params.ratingvalue }}",
+    "ratingCount": "{{ .Params.ratingcount }}"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Params.author }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "0.00",
+	"availability": "http://schema.org/InStock"
+  }
+}
+</script> 
+{{ end }}
+
+

@@ -1,0 +1,112 @@
+                
+                <!-- Sidebar Start -->
+                <div class="col-lg-4 col-12 mb-50">
+                    <div class="row">
+                       
+                        <!-- Single Sidebar -->
+                        <div class="single-sidebar col-lg-12 col-md-6 col-12">
+
+                            <!-- Sidebar Block Wrapper -->
+                            <div class="sidebar-block-wrapper">
+
+                                <!-- Sidebar Block Head Start -->
+                                <div class="head feature-head">
+
+                                    <!-- Title -->
+                                    <h4 class="title">Share This Recipe</h4>
+
+                                </div><!-- Sidebar Block Head End -->
+
+                                <!-- Sidebar Block Body Start -->
+                                <div class="body">
+									{{ $title := .Title }}
+									{{ $url := printf "%s" .Permalink }}
+									{{ $body := print $title ", by " .Site.Title "\n" .Params.description "\n\n" $url "\n" }}
+                                    <div class="sidebar-social-follow">
+										<div>
+                                            <a href="https://twitter.com/intent/tweet?hashtags=recipe&amp;url={{ .Permalink }}&amp;text={{ .Title }}" target="_blank" rel="noopener" aria-label="Share on Twitter" class="twitter" style="background-color: #00acee;">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="https://www.facebook.com/sharer.php?u={{ printf "%s" .Permalink  }}" target="_blank" rel="noopener" aria-label="Share on Facebook" class="facebook" style="background-color: #3b5998">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $url }}&amp;source={{ $url }}&amp;title={{ $title }}&amp;summary={{ $title }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="linkedin" style="background-color: #0e76a8">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="whatsapp://send?text={{ $body }}" target="_blank" class="whatsapp" style="background-color: #25D366">
+                                                <i class="fa fa-whatsapp"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div><!-- Sidebar Block Body End -->
+
+                            </div>
+
+                        </div>
+
+						<!-- Post Block Wrapper Start -->
+						<div class="single-sidebar col-lg-12 col-md-6 col-12 mt-0 pt-0">
+							<!-- Overlay Post Start -->{{with .PrevInSection}}
+							<div class="post post-overlay hero-post mb-3">
+								<div class="post-wrap">
+
+									<!-- Image -->
+									<div class="image"><img src="{{ .Params.Image }}" alt="{{ .Params.Title }}"></div>
+
+									<!-- Category -->{{with .Params.tags }}{{ range first 1 . }}
+									<a href="#" class="category education">{{ . | lower }}</a>
+									{{ end }}{{ end }}
+
+									<!-- Content -->
+									<div class="content">
+
+										<!-- Title -->
+										<h4 class="title"><a href="{{ .Permalink }}">{{ .Params.Title }}</a></h4>
+
+										<!-- Meta -->
+										<div class="meta fix">
+											<span class="meta-item date"><i class="fa fa-clock-o"></i>{{ dateFormat "02/01/2006 15:04" .Date }}</span>
+										</div>
+
+									</div>
+
+								</div>
+							</div><!-- Overlay Post End -->{{end}}
+							<!-- Overlay Post Start -->{{with .NextInSection}}
+							<div class="post post-overlay hero-post mb-3">
+								<div class="post-wrap">
+
+									<!-- Image -->
+									<div class="image"><img src="{{ .Params.Image }}" alt="{{ .Params.Title }}"></div>
+
+									<!-- Category -->{{with .Params.tags }}{{ range first 1 . }}
+									<a href="#" class="category sports">{{ . | lower }}</a>
+									{{ end }}{{ end }}
+
+									<!-- Content -->
+									<div class="content">
+
+										<!-- Title -->
+										<h4 class="title"><a href="{{ .Permalink }}">{{ .Params.Title }}</a></h4>
+
+										<!-- Meta -->
+										<div class="meta fix">
+											<span class="meta-item date"><i class="fa fa-clock-o"></i>{{ dateFormat "02/01/2006 15:04" .Date }}</span>
+										</div>
+
+									</div>
+
+								</div>
+							</div><!-- Overlay Post End -->{{end}}
+
+						</div><!-- Post Block Wrapper End -->
+                        
+                    </div>
+                </div><!-- Sidebar End -->

@@ -1,0 +1,23 @@
+<head>
+  {{ partial "arsae-client.html" . }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {{ hugo.Generator }}
+  {{ if .IsPage }}<meta name="description" content="{{ .Summary | markdownify | plainify | htmlUnescape }}">
+  {{ else }}<meta name="description" content="{{ .Site.Params.description }}">{{ end }}
+  {{ $appleTouchIcon := "img/logo.svg" }}<link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon | absURL }}">
+  {{ $favicon32x32 := "img/logo.svg" }}<link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon32x32 | absURL }}">
+  {{ $favicon16x16 := "img/logo.svg" }}<link rel="icon" type="image/png" sizes="16x16" href="{{ $favicon16x16 | absURL }}">
+  {{ $safariPinnedTab := "img/logo.svg" }}<link rel="mask-icon" href="{{ $safariPinnedTab | absURL }}" color="{{ .Site.Params.faviconSafariPinnedTabColor }}">
+  <meta name="msapplication-TileColor" content="{{ .Site.Params.faviconMsApplicationTileColor }}">
+  <meta name="theme-color" content="{{ .Site.Params.faviconThemeColor }}">
+  {{ $tethermincss := "assets/tether/tether.min.css" }}<link rel="stylesheet" href="{{ $tethermincss | absURL }}">
+  {{ $bootstrapmincss := "css/bootstrap.min.css" }}<link rel="stylesheet" href="{{ $bootstrapmincss | absURL }}">
+  {{ $fontawesomecss := "css/font-awesome.min.css" }}<link rel="stylesheet" href="{{ $fontawesomecss | absURL }}">
+  {{ $plugincss := "css/plugins.css" }}<link rel="stylesheet" href="{{ $plugincss | absURL }}">
+  {{ $themestyle := "css/style.css" }}<link rel="stylesheet" href="{{ $themestyle | absURL }}">
+  {{ $modernizrjs := "js/vendor/modernizr-2.8.3.min.js" }}<script src="{{ $modernizrjs | absURL }}"></script>
+  {{ if .IsPage }}<title>{{ .Title }} | {{ .Site.Title }}</title>
+  {{ else }}<title>{{ .Site.Title }} - {{ .Site.Params.topdescription }}</title>{{ end }}
+  {{ partial "schema.html" . }}
+</head>

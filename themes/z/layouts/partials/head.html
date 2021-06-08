@@ -1,0 +1,30 @@
+<head>
+{{ partial "arsae-client.html" . }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {{ hugo.Generator }}
+  {{ if eq .Section "post"}}<meta name="description" content="{{ .Summary | markdownify | plainify | htmlUnescape }}">{{ end}}
+  {{ if ne .Section "post"}}{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}{{ end }}
+  {{ $appleTouchIcon := "img/logo.svg" }}<link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon | absURL }}">
+  {{ $favicon32x32 := "img/logo.svg" }}<link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon32x32 | absURL }}">
+  {{ $favicon16x16 := "img/logo.svg" }}<link rel="icon" type="image/png" sizes="16x16" href="{{ $favicon16x16 | absURL }}">
+  {{ $siteWebmanifest := "site.webmanifest" }}<link rel="manifest" href="{{ $siteWebmanifest | absURL }}">
+  {{ $safariPinnedTab := "img/logo.svg" }}<link rel="mask-icon" href="{{ $safariPinnedTab | absURL }}" color="{{ .Site.Params.faviconSafariPinnedTabColor }}">
+  <meta name="msapplication-TileColor" content="{{ .Site.Params.faviconMsApplicationTileColor }}">
+  <meta name="theme-color" content="{{ .Site.Params.faviconThemeColor }}">
+  {{ $bootstrapCss := "css/bootstrap.css" }}<link rel="stylesheet" href="{{ $bootstrapCss | absURL }}" />
+  {{ $customCss := "css/style.css" }}<link rel="stylesheet" href="{{ $customCss | absURL }}" />
+  {{ if .IsHome }}
+  {{ $homepage := "Home" }}
+  {{ with .Site.Menus.nav }}
+    {{ range first 1 . }}
+      {{ $homepage = .Name }}
+    {{ end }}
+  {{ end }}
+  <title>{{ $homepage }} | {{ .Site.Title }}</title>
+  {{ else }}
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  {{ end }}
+  {{ partial "schema.html" . }}
+
+</head>

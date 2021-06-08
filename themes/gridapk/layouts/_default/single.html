@@ -1,0 +1,62 @@
+{{- define "main" -}}
+    <!-- Blog Section Start -->
+    <div class="blog-section section mt-30">
+        <div class="container">
+            
+            <!-- Feature Post Row Start -->
+            <div class="row">
+                
+                <div class="col-lg-8 col-12 mb-50">
+                                   
+                    <!-- Single Blog Start -->
+                    <div class="single-blog mb-50">
+                        <div class="blog-wrap">
+                            <!-- Title -->
+                            <h3 class="title mb-0">{{ .Title }}</h3>
+
+                            <div class="mb-1">{{ partial "ads-below-title.html" . }}</div>
+                            <!-- Meta -->
+                            <div class="tags-social float-left border-0 mt-1 mb-0 p-0">
+                                <div class="tags float-left">
+                                    <div class="meta fix">
+                                        <a href="{{ .Site.Author.homepage }}" class="meta-item category fashion">{{ .Params.Author }}</a>
+                                    </div>
+                                </div>
+                                {{ partial "social-share.html" . }}
+                            </div>
+
+                            <!-- Content -->
+                            <div class="content">
+
+                                <!-- Description -->
+                                {{ replace (replace .Content "<!--inarticleads1-->" (partial "ads-in-article1.html" .)) "<!--inarticleads2-->" (partial "ads-in-article2.html" .) | safeHTML }}
+
+                            </div>
+                            <div class="mt-1">{{ partial "ads-below-content.html" . }}</div>
+                            <div class="tags-social float-left">
+
+                                <div class="tags float-left">
+                                    <i class="fa fa-tags"></i>
+                                    {{with .Params.tags }}{{ range first 2 . }}
+                                    <a href="#">#{{ . | lower }}&nbsp;</a>
+                                    {{ end }}{{ end }}
+                                </div>
+
+                                {{ partial "social-share.html" . }}
+
+                            </div>
+
+                        </div>
+                    </div><!-- Single Blog End -->
+                                    
+                    {{ partial "prev-next-post.html" . }}
+                        
+                </div>
+
+                {{ partial "sidebar.html" .}}
+                
+            </div><!-- Feature Post Row End -->
+            
+        </div>
+    </div><!-- Blog Section End -->
+{{- end -}}
